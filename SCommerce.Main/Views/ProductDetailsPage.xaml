@@ -37,7 +37,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Nome do meu produto"
+            <TextBlock Text="{x:Bind ViewModel.Title, Mode=OneWay}"
                        TextWrapping="Wrap"
                        FontSize="50"
                        FontWeight="SemiBold"
@@ -52,7 +52,7 @@
                     VerticalAlignment="Top"
                     CornerRadius="45">
 
-                    <Image Source="ms-appx:///Assets/Images/shirt1.jpg" 
+                    <Image Source="{x:Bind ViewModel.SelectedImage}" 
                            Stretch="UniformToFill"/>
                 </Border>
 
@@ -74,7 +74,7 @@
 
                 </StackPanel>
 
-                <TextBlock Text="R$ 80,50" FontSize="28" FontWeight="SemiBold" Margin="0,20" />
+                <TextBlock Text="{x:Bind ViewModel.Price}" FontSize="28" FontWeight="SemiBold" Margin="0,20" />
 
                 <Button Content="Adicionar no Carrinho" FontSize="20"/>
 
@@ -86,7 +86,7 @@
                        FontSize="20"
                        Foreground="#666666"
                        Margin="20,0"
-                       Text="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32."
+                       Text="{x:Bind ViewModel.Description}"
                        />
 
         </Grid>

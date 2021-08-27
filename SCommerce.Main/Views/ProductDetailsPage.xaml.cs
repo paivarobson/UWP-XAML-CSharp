@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SCommerce.Main.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace SCommerce.Main.Views
     /// </summary>
     public sealed partial class ProductDetailsPage : Page
     {
+        public ProductDetailsPageViewModel ViewModel => new ProductDetailsPageViewModel();
+
         public ProductDetailsPage()
         {
             this.InitializeComponent();
