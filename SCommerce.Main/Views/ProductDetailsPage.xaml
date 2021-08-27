@@ -4,10 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SCommerce.Main.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:converters="using:SCommerce.Main.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <converters:DoubleToCurrencyFormatConverter x:Key="CurrencyConverter" />
+    </Page.Resources>
+    
     <Page.TopAppBar>
         <CommandBar IsOpen="True" IsSticky="True">
             <CommandBar.Content>
@@ -74,7 +78,10 @@
 
                 </StackPanel>
 
-                <TextBlock Text="{x:Bind ViewModel.Price}" FontSize="28" FontWeight="SemiBold" Margin="0,20" />
+                <TextBlock FontSize="28" FontWeight="SemiBold" Margin="0,20">
+                    <Run Text="R$"/>
+                    <Run Text="{x:Bind ViewModel.Price, Converter={StaticResource CurrencyConverter}}"/>
+                </TextBlock>
 
                 <Button Content="Adicionar no Carrinho" FontSize="20"/>
 

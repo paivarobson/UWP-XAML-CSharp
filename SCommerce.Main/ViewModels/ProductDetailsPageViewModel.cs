@@ -19,7 +19,7 @@ namespace SCommerce.Main.ViewModels
         {
             Title = "Produto 1";
             Description = "Não é uma descrição ideal para este produto. Mas é a que tem :)";
-            Price = 99.99;
+            Price = 99.99856;
             Rating = 4;
             Images = new List<string>
             {
