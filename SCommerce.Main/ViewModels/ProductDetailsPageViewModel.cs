@@ -1,19 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SCommerce.Main.ViewModels
 {
-    public class ProductDetailsPageViewModel
+    public class ProductDetailsPageViewModel : INotifyPropertyChanged
     {
         public string Title { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
         public int Rating { get; set; }
         public List<string> Images { get; set; }
-        public string SelectedImage { get; set; }
+        public string selectedImage;
+        public string SelectedImage
+        {
+            get { return selectedImage; }
+            set
+            {
+                if (selectedImage != value)
+                {
+                    selectedImage = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedImage"));
+                }                
+            }
+        }
 
         public ProductDetailsPageViewModel()
         {
@@ -29,5 +42,7 @@ namespace SCommerce.Main.ViewModels
             };
             SelectedImage = Images[0];
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
