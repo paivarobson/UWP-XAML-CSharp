@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Windows.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,26 +8,50 @@ using System.Threading.Tasks;
 
 namespace SCommerce.Main.ViewModels
 {
-    public class ProductDetailsPageViewModel : INotifyPropertyChanged
+    public class ProductDetailsPageViewModel : ViewModelBase
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public double Price { get; set; }
-        public int Rating { get; set; }
-        public List<string> Images { get; set; }
-        public string selectedImage;
+        private string title;
+        public string Title
+        {
+            get { return title; }
+            set { SetProperty(ref title, value); }
+        }
+
+        private string description;
+        public string Description
+        {
+            get { return description; }
+            set { SetProperty(ref description, value); }
+        }
+
+        private double price;
+        public double Price
+        {
+            get { return price; }
+            set { SetProperty(ref price, value); }
+        }
+
+        private int rating;
+        public int Rating
+        {
+            get { return rating; }
+            set { SetProperty(ref rating, value); }
+        }
+
+        private List<string> images;
+        public List<string> Images
+        {
+            get { return images; }
+            set { SetProperty(ref images, value); }
+        }
+
+        private string selectedImage;
         public string SelectedImage
         {
             get { return selectedImage; }
-            set
-            {
-                if (selectedImage != value)
-                {
-                    selectedImage = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedImage"));
-                }                
-            }
+            set { SetProperty(ref selectedImage, value); }
         }
+
 
         public ProductDetailsPageViewModel()
         {
@@ -43,6 +68,5 @@ namespace SCommerce.Main.ViewModels
             SelectedImage = Images[0];
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

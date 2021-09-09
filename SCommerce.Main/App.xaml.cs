@@ -32,5 +32,13 @@ namespace SCommerce.Main
 
             return Task.CompletedTask;
         }
+
+        protected override UIElement CreateShell(Frame rootFrame)
+        {
+            var appShell = new AppShell();
+            appShell.SetFrame(rootFrame);
+
+            return appShell;
+        }
     }
 }

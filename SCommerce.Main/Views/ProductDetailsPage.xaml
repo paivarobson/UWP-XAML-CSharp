@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:converters="using:SCommerce.Main.Converters"
     mc:Ignorable="d"
+    xmlns:prism="using:Prism.Windows.Mvvm"
+    prism:ViewModelLocator.AutoWireViewModel="True"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
@@ -21,23 +23,6 @@
                 </Border>
             </DataTemplate>
     </Page.Resources>
-    
-    <Page.TopAppBar>
-        <CommandBar IsOpen="True" IsSticky="True">
-            <CommandBar.Content>
-                <TextBlock 
-                    Text="SCommerce"
-                    Foreground="DarkBlue"
-                    FontSize="20"
-                    FontWeight="Black"
-                    VerticalAlignment="Center"
-                    Margin="20,0"/>
-            </CommandBar.Content>
-
-            <AppBarButton Label="Cart" Icon="AllApps"/>
-
-        </CommandBar>
-    </Page.TopAppBar>
     
     <ScrollViewer>
         <Grid >
