@@ -1,5 +1,6 @@
 ﻿using Prism.Unity.Windows;
 using SCommerce.Main.Common;
+using SCommerce.Main.Services;
 using SCommerce.Main.Views;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,13 @@ namespace SCommerce.Main
             appShell.SetFrame(rootFrame);
 
             return appShell;
+        }
+
+        protected override void ConfigureContainer()
+        {
+            base.ConfigureContainer();
+
+            RegisterTypeIfMissing(typeof(IProductService), typeof(ProductService), false);
         }
     }
 }

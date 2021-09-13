@@ -124,7 +124,10 @@
     </Compile>
     <Compile Include="Common\PageTokens.cs" />
     <Compile Include="Converters\DoubleToCurrencyFormatConverter.cs" />
+    <Compile Include="Entities\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IProductService.cs" />
+    <Compile Include="Services\ProductService.cs" />
     <Compile Include="ViewModels\ProductDetailsPageViewModel.cs" />
     <Compile Include="Views\ProductDetailsPage.xaml.cs">
       <DependentUpon>ProductDetailsPage.xaml</DependentUpon>

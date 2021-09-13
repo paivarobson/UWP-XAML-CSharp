@@ -1,4 +1,7 @@
 ﻿using Prism.Windows.Mvvm;
+using Prism.Windows.Navigation;
+using SCommerce.Main.Entities;
+using SCommerce.Main.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +13,12 @@ namespace SCommerce.Main.ViewModels
 {
     public class ProductDetailsPageViewModel : ViewModelBase
     {
+        #region Attributes
+        private readonly IProductService productService;
+        private Product model;
+        #endregion
+
+        #region Properties
         private string title;
         public string Title
         {
@@ -46,14 +55,16 @@ namespace SCommerce.Main.ViewModels
         }
 
         private string selectedImage;
+
         public string SelectedImage
         {
             get { return selectedImage; }
             set { SetProperty(ref selectedImage, value); }
-        }
+        } 
+        #endregion
 
 
-        public ProductDetailsPageViewModel()
+        public ProductDetailsPageViewModel(IProductService productService)
         {
             Title = "Produto 1";
             Description = "Não é uma descrição ideal para este produto. Mas é a que tem :)";
@@ -68,5 +79,22 @@ namespace SCommerce.Main.ViewModels
             SelectedImage = Images[0];
         }
 
+        public override async void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
+        {
+            base.OnNavigatedTo(e, viewModelState);
+            await LoadProductAsync(1);
+        }
+
+        private async Task LoadProductAsync(int id)
+        {
+            model = await productService.FindAsync(id);
+
+            Title = model.Title;
+            Description = model.Description;
+            Price = model.Price;
+            Rating = model.Rating;
+            Images = model.Images;
+            SelectedImage = model.Images.FirstOrDefault();
+        }
     }
 }
