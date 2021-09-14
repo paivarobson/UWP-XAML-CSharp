@@ -67,7 +67,7 @@
                     <Run Text="{x:Bind ViewModel.Price, Converter={StaticResource CurrencyConverter}}"/>
                 </TextBlock>
 
-                <Button Content="Adicionar no Carrinho" FontSize="20"/>
+                <Button Content="Adicionar no Carrinho" FontSize="20" Command="{x:Bind ViewModel.AddToCart}/>
 
             </StackPanel>
 

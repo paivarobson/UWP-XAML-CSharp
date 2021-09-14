@@ -1,4 +1,5 @@
-﻿using Prism.Windows.Mvvm;
+﻿using Prism.Commands;
+using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
 using SCommerce.Main.Entities;
 using SCommerce.Main.Services;
@@ -15,6 +16,7 @@ namespace SCommerce.Main.ViewModels
     {
         #region Attributes
         private readonly IProductService productService;
+        private readonly ICartService cartService;
         private Product model;
         #endregion
 
@@ -60,12 +62,25 @@ namespace SCommerce.Main.ViewModels
         {
             get { return selectedImage; }
             set { SetProperty(ref selectedImage, value); }
-        } 
+        }
         #endregion
 
-        public ProductDetailsPageViewModel(IProductService productService)
+        #region Commands
+        private DelegateCommand addToCart;
+        public DelegateCommand AddToCart =>
+            addToCart ?? (addToCart = new DelegateCommand(ExecuteCommandName));
+
+        void ExecuteCommandName()
+        {
+            cartService.Add(model.Id, 1);
+        }
+        
+        #endregion
+
+        public ProductDetailsPageViewModel(IProductService productService, ICartService cartService)
         {
             this.productService = productService;
+            this.cartService = cartService;
         }
 
         public override async void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)

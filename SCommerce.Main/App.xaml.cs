@@ -47,6 +47,7 @@ namespace SCommerce.Main
             base.ConfigureContainer();
 
             RegisterTypeIfMissing(typeof(IProductService), typeof(ProductService), false);
+            RegisterTypeIfMissing(typeof(ICartService), typeof(CartService), true);
         }
     }
 }
