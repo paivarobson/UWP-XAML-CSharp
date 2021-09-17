@@ -68,9 +68,9 @@ namespace SCommerce.Main.ViewModels
         #region Commands
         private DelegateCommand addToCart;
         public DelegateCommand AddToCart =>
-            addToCart ?? (addToCart = new DelegateCommand(ExecuteCommandName));
+            addToCart ?? (addToCart = new DelegateCommand(ExecuteAddToCart));
 
-        void ExecuteCommandName()
+        void ExecuteAddToCart()
         {
             cartService.Add(model.Id, 1);
         }
