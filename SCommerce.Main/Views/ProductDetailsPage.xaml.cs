@@ -28,7 +28,7 @@ namespace SCommerce.Main.Views
         public ProductDetailsPage()
         {
             this.InitializeComponent();
-            this.DataContext = new ProductDetailsPageViewModel();
+
         }
     }
 }
