@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SCommerce.Main.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:converters="using:SCommerce.Main.Converters"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:converters="using:SCommerce.Main.Converters"
     mc:Ignorable="d"
     xmlns:prism="using:Prism.Windows.Mvvm"
     prism:ViewModelLocator.AutoWireViewModel="True"
@@ -67,7 +68,7 @@
                     <Run Text="{x:Bind ViewModel.Price, Converter={StaticResource CurrencyConverter}}"/>
                 </TextBlock>
 
-                <Button Content="Adicionar no Carrinho" FontSize="20" Command="{x:Bind ViewModel.AddToCart}/>
+                <Button Content="Adicionar no Carrinho" FontSize="20" Command="{x:Bind ViewModel.AddToCart}"/>
 
             </StackPanel>
 
