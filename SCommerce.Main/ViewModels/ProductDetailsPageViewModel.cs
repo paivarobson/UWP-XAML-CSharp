@@ -65,18 +65,6 @@ namespace SCommerce.Main.ViewModels
         }
         #endregion
 
-        #region Commands
-        private DelegateCommand addToCart;
-        public DelegateCommand AddToCart =>
-            addToCart ?? (addToCart = new DelegateCommand(ExecuteAddToCart));
-
-        void ExecuteAddToCart()
-        {
-            cartService.Add(model.Id, 1);
-        }
-        
-        #endregion
-
         public ProductDetailsPageViewModel(IProductService productService, ICartService cartService)
         {
             this.productService = productService;
@@ -100,5 +88,11 @@ namespace SCommerce.Main.ViewModels
             Images = model.Images;
             SelectedImage = model.Images.FirstOrDefault();
         }
+
+        public void AddToCart()
+        {
+            cartService.Add(model.Id, 1);
+        }
+
     }
 }
