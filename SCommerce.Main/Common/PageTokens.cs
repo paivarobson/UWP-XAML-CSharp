@@ -9,5 +9,6 @@ namespace SCommerce.Main.Common
     public static class PageTokens
     {
         public const string ProductDetailsPage = "ProductDetails";
+        public const string CartPage = "Cart";
     }
 }
