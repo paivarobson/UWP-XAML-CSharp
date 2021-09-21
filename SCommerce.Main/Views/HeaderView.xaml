@@ -23,7 +23,7 @@
                     Margin="20,0"/>
             </CommandBar.Content>
 
-            <AppBarButton Label="Cart" Icon="AllApps" Click="{x:Bind ViewModel.NavigateToCartPage}"/>
+            <AppBarButton Label="{x:Bind ViewModel.CartLabel, Mode=OneWay}" Icon="AllApps" Click="{x:Bind ViewModel.NavigateToCartPage}"/>
 
         </CommandBar>
 
