@@ -7,9 +7,10 @@
 
     <windows:PrismUnityApplication.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Themes/LightColorPallete.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light" Source="Themes/LightColorPallete.xaml"/>
+                <ResourceDictionary x:Key="Dark" Source="Themes/DarkColorPallete.xaml"/>
+            </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
     </windows:PrismUnityApplication.Resources>
 
