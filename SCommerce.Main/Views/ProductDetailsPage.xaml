@@ -40,6 +40,26 @@
             <Setter Property="Foreground" Value="{ThemeResource Color2}"/>
         </Style>
 
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Blue"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="{TemplateBinding CornerRadius}" 
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Content}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                              Foreground="{TemplateBinding Foreground}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
     </Page.Resources>
     
     <ScrollViewer>
@@ -83,7 +103,7 @@
                     <Run Text="{x:Bind ViewModel.Price, Converter={StaticResource CurrencyConverter}}"/>
                 </TextBlock>
 
-                <Button Content="Adicionar no Carrinho" FontSize="20" Click="{x:Bind ViewModel.AddToCart}"/>
+                <Button Content="Add to Cart" FontSize="20" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Width="200" Style="{StaticResource PrimaryButton}" Click="{x:Bind ViewModel.AddToCart}"/>
 
             </StackPanel>
 
