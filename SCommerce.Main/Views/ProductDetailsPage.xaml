@@ -23,6 +23,23 @@
                     <Image Source="{x:Bind}" Stretch="UniformToFill"/>
                 </Border>
             </DataTemplate>
+
+        <Style x:Key="Title" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{ThemeResource Color1}"/>
+        </Style>
+
+        <Style x:Key="SubTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="Text" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="{ThemeResource Color2}"/>
+        </Style>
+
     </Page.Resources>
     
     <ScrollViewer>
@@ -37,11 +54,9 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="{x:Bind ViewModel.Title, Mode=OneWay}"
+            <TextBlock Text="{x:Bind ViewModel.Title}"
+                       Style="{StaticResource Title}"
                        TextWrapping="Wrap"
-                       FontSize="50"
-                       FontWeight="SemiBold"
-                       Foreground="{ThemeResource Color1}"
                        Margin="20,20,20,40"
                        Grid.ColumnSpan="2"
                        />
@@ -63,7 +78,7 @@
                           />
 
 
-                <TextBlock FontSize="28" FontWeight="SemiBold" Margin="0,20">
+                <TextBlock Style="{StaticResource SubTitle}" Margin="0,20">
                     <Run Text="R$"/>
                     <Run Text="{x:Bind ViewModel.Price, Converter={StaticResource CurrencyConverter}}"/>
                 </TextBlock>
@@ -75,8 +90,7 @@
             <TextBlock Grid.Row="1"
                        Grid.Column="1" 
                        TextWrapping="Wrap"
-                       FontSize="20"
-                       Foreground="#666666"
+                       Style="{StaticResource Text}"
                        Margin="20,0"
                        Text="{x:Bind ViewModel.Description}"
                        />
