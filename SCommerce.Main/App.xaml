@@ -5,4 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SCommerce.Main">
 
+    <windows:PrismUnityApplication.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/LightColorPallete.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </windows:PrismUnityApplication.Resources>
+
 </windows:PrismUnityApplication>

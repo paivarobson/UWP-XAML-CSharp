@@ -41,7 +41,7 @@
                        TextWrapping="Wrap"
                        FontSize="50"
                        FontWeight="SemiBold"
-                       Foreground="#333333"
+                       Foreground="{StaticResource Color1}"
                        Margin="20,20,20,40"
                        Grid.ColumnSpan="2"
                        />
