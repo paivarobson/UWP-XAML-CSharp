@@ -6,13 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:prism="using:Prism.Windows.Mvvm"
+    xmlns:prism="using:Prism.Windows.Mvvm" xmlns:controls="using:SCommerce.Main.Controls"
     prism:ViewModelLocator.AutoWireViewModel="True"
     d:DesignHeight="300"
     d:DesignWidth="400">
+    <UserControl.Resources>
+        
+    </UserControl.Resources>
 
 
-        <CommandBar IsOpen="True" IsSticky="True">
+        <CommandBar>
             <CommandBar.Content>
                 <TextBlock 
                     Text="SCommerce"
@@ -23,7 +26,7 @@
                     Margin="20,0"/>
             </CommandBar.Content>
 
-            <AppBarButton Label="{x:Bind ViewModel.CartLabel, Mode=OneWay}" Icon="AllApps" Click="{x:Bind ViewModel.NavigateToCartPage}"/>
+        <controls:BadgeAppBarButton Icon="Library" Badge="{x:Bind ViewModel.CartQuatity}" Click="{x:Bind ViewModel.NavigateToCartPage}"/>
 
         </CommandBar>
 

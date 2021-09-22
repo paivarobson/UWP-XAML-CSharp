@@ -14,13 +14,12 @@ namespace SCommerce.Main.ViewModels
     public class HeaderViewModel : BindableBase
     {
         private readonly INavigationService navigationService;
-        private int cartQuatity = 0;
 
-        private string cartLabel;
-        public string CartLabel
+        private int cartQuatity;
+        public int CartQuatity
         {
-            get { return cartLabel; }
-            set { SetProperty(ref cartLabel, value); }
+            get { return cartQuatity; }
+            set { SetProperty(ref cartQuatity, value); }
         }
 
         public HeaderViewModel(INavigationService navigationService, IEventAggregator eventAggregator)
@@ -33,8 +32,7 @@ namespace SCommerce.Main.ViewModels
 
         private void HandleAddedToCartEvent(AddedToCartEvent.PayLoad payLoad)
         {
-            cartQuatity += payLoad.Quatity;
-            cartLabel = $"Cart ({cartQuatity})";
+            CartQuatity += payLoad.Quatity;
         }
 
         public void NavigateToCartPage()
