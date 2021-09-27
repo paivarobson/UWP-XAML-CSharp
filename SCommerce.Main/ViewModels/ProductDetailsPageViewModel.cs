@@ -89,9 +89,9 @@ namespace SCommerce.Main.ViewModels
             SelectedImage = model.Images.FirstOrDefault();
         }
 
-        public void AddToCart()
+        public async void AddToCart()
         {
-            cartService.Add(model.Id, 1);
+            await cartService.AddAsync(model.Id, 1);
         }
 
     }

@@ -7,7 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:converters="using:SCommerce.Main.Converters"
     mc:Ignorable="d"
-    xmlns:prism="using:Prism.Windows.Mvvm" xmlns:controls="using:SCommerce.Main.Controls"
+    xmlns:controls="using:SCommerce.Main.Controls"
+    xmlns:prism="using:Prism.Windows.Mvvm" 
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -108,7 +109,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-
+            <local:HeaderView/>
             <TextBlock Text="{x:Bind ViewModel.Title}"
                        Style="{StaticResource Title}"
                        TextWrapping="Wrap"

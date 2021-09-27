@@ -1,7 +1,14 @@
-﻿namespace SCommerce.Main.Services
+﻿using SCommerce.Main.Events.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace SCommerce.Main.Services
 {
     public interface ICartService
     {
-        void Add(int productId, int quantity);
+       Task AddAsync(int productId, int quantity);
+
+        List<CartEntry> ListitemsForCheckout();
+
     }
 }

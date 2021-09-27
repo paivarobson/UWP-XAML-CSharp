@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SCommerce.Main.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace SCommerce.Main.Views
     /// </summary>
     public sealed partial class CartPage : Page
     {
+        public CartPageViewModel ViewModel => (CartPageViewModel)DataContext;
         public CartPage()
         {
             this.InitializeComponent();
