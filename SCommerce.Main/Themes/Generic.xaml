@@ -291,4 +291,54 @@
         </Setter>
     </Style>
 
+
+    <Style TargetType="controls:Rating">
+        <Setter Property="Background" Value="#F5BD1F"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:Rating">
+                    <StackPanel Orientation="Horizontal">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="RatingStates">
+                                <VisualState x:Name="Rating1"/>
+                                <VisualState x:Name="Rating2">
+                                    <VisualState.Setters>
+                                        <Setter Target="Star2.Symbol" Value="SolidStar"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Rating3">
+                                    <VisualState.Setters>
+                                        <Setter Target="Star2.Symbol" Value="SolidStar"/>
+                                        <Setter Target="Star3.Symbol" Value="SolidStar"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Rating4">
+                                    <VisualState.Setters>
+                                        <Setter Target="Star2.Symbol" Value="SolidStar"/>
+                                        <Setter Target="Star3.Symbol" Value="SolidStar"/>
+                                        <Setter Target="Star4.Symbol" Value="SolidStar"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Rating5">
+                                    <VisualState.Setters>
+                                        <Setter Target="Star2.Symbol" Value="SolidStar"/>
+                                        <Setter Target="Star3.Symbol" Value="SolidStar"/>
+                                        <Setter Target="Star4.Symbol" Value="SolidStar"/>
+                                        <Setter Target="Star5.Symbol" Value="SolidStar"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        
+                        
+                        <SymbolIcon Symbol="SolidStar" Foreground="{TemplateBinding Background}" Margin="0,0,5,0"/>
+                        <SymbolIcon x:Name="Star2" Symbol="OutlineStar" Foreground="{TemplateBinding Background}" Margin="0,0,5,0"/>
+                        <SymbolIcon x:Name="Star3" Symbol="OutlineStar" Foreground="{TemplateBinding Background}" Margin="0,0,5,0"/>
+                        <SymbolIcon x:Name="Star4" Symbol="OutlineStar" Foreground="{TemplateBinding Background}" Margin="0,0,5,0"/>
+                        <SymbolIcon x:Name="Star5" Symbol="OutlineStar" Foreground="{TemplateBinding Background}" Margin="0,0,5,0"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

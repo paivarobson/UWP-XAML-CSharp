@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:converters="using:SCommerce.Main.Converters"
     mc:Ignorable="d"
-    xmlns:prism="using:Prism.Windows.Mvvm"
+    xmlns:prism="using:Prism.Windows.Mvvm" xmlns:controls="using:SCommerce.Main.Controls"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -129,9 +129,9 @@
                 <ListView ItemsSource="{x:Bind ViewModel.Images}"
                           ItemsPanel="{StaticResource ImagesPanelTemplate}"
                           ItemTemplate="{StaticResource ImagesItemTemplate}"
-                          SelectedItem="{x:Bind ViewModel.SelectedImage, Mode=TwoWay}"
-                          />
+                          SelectedItem="{x:Bind ViewModel.SelectedImage, Mode=TwoWay}"/>
 
+                <controls:Rating Value="{x:Bind ViewModel.Rating, Mode=OneWay}"/>
 
                 <TextBlock Style="{StaticResource SubTitle}" Margin="0,20">
                     <Run Text="R$"/>

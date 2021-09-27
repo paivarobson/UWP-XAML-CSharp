@@ -16,7 +16,7 @@ namespace SCommerce.Main.Services
                 Title = "Product from service",
                 Description = "Não é uma descrição ideal para este produto. Mas é a que tem :)",
                 Price = 99.99856,
-                Rating = 4,
+                Rating = 3,
                 Images = new List<string>
                 {
                     "ms-appx:///Assets/Images/shirt1.jpg",
