@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:prism="using:Prism.Windows.Mvvm" xmlns:models="using:SCommerce.Main.Events.Models"
+    xmlns:prism="using:Prism.Windows.Mvvm" xmlns:models="using:SCommerce.Main.Events.Models" xmlns:controls="using:SCommerce.Main.Controls"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -25,8 +25,8 @@
                     <TextBlock Text="{x:Bind Price}"/>
                 </StackPanel>
 
-                <TextBlock Text="{x:Bind Quantity}" Grid.Column="2" VerticalAlignment="Center"/>
-
+                <controls:Stepper Value="{x:Bind Quantity}" Grid.Column="2" VerticalAlignment="Center"/>
+                
             </Grid>
         </DataTemplate>
     </Page.Resources>

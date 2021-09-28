@@ -341,4 +341,91 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="controls:Stepper">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:Stepper">
+                    <Grid>
+                        <Grid.Resources>
+
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <ContentPresenter x:Name="ContentPresenter" CornerRadius="90" Width="30" Height="30" Background="{TemplateBinding Background}">
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates">
+                                                        <VisualState x:Name="Normal">
+                                                            <Storyboard>
+                                                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="PointerOver">
+                                                            <Storyboard>
+                                                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                                            </Storyboard>
+                                                            <VisualState.Setters>
+                                                                <Setter Target="ContentPresenter.Opacity" Value=".9"/>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Pressed">
+                                                            <Storyboard>
+                                                                <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                                            </Storyboard>
+                                                            <VisualState.Setters>
+                                                                <Setter Target="ContentPresenter.Opacity" Value=".7"/>
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                            </ContentPresenter>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup>
+                                <VisualState x:Name="CommonStates"/>
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="ManyItems">
+                                    <VisualState.Setters>
+                                        <Setter Target="PART_RemoveButton.Visibility" Value="Collapsed"/>
+                                        <Setter Target="PART_SubtractButton.Visibility" Value="Visible"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        
+                        
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="PART_RemoveButton" Background="DarkRed">
+                            <SymbolIcon Symbol="Remove"/>
+                        </Button>
+                        <Button x:Name="PART_SubtractButton" Visibility="Collapsed" Background="Orange">
+                            <SymbolIcon Symbol="ClosePane"/>
+                        </Button>
+
+                        <TextBox Text="{Binding Value, Mode=OneWay, RelativeSource={RelativeSource TemplateParent}}" 
+                                 IsReadOnly="True"
+                                 Grid.Column="1"/>
+
+                        <Button x:Name="PART_AddButton" Grid.Column="2" Background="DarkGreen">
+                            <SymbolIcon Symbol="Add"/>
+                        </Button>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
