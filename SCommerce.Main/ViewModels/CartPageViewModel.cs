@@ -23,9 +23,31 @@ namespace SCommerce.Main.ViewModels
             set { SetProperty(ref items, value); }
         }
 
+        private List<string> steps;
+        public List<string> Steps
+        {
+            get { return steps; }
+            set { SetProperty(ref steps, value); }
+        }
+
+        private string selectedStep;
+        public string  SelectedStep
+        {
+            get { return selectedStep; }
+            set { SetProperty(ref selectedStep, value); }
+        }
+
         public CartPageViewModel(ICartService cartService)
         {
             this.cartService = cartService;
+            Steps = new List<string>
+            {
+                "Checkout",
+                "Address",
+                "Payment"
+            };
+
+            SelectedStep = Steps.First();
         }
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
         {
@@ -36,6 +58,13 @@ namespace SCommerce.Main.ViewModels
                                 .ToList();
 
             Items = new ObservableCollection<CartItemViewModel>(list);
+        }
+
+        int count = 0;
+        public void ChangeSelectStep()
+        {
+            count++;
+            SelectedStep = Steps[count % Steps.Count];
         }
 
         private async void AddItem(int productId, int quatity)

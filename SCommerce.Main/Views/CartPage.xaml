@@ -36,6 +36,35 @@
                 
             </Grid>
         </DataTemplate>
+
+        <Style x:Key="StepsContainerStyle" TargetType="ListViewItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <ContentPresenter x:Name="Root" 
+                                          Width="100" 
+                                          Height="100" 
+                                          Background="Gray" 
+                                          Foreground="White" 
+                                          CornerRadius="90"
+                                          VerticalContentAlignment="Center"
+                                          HorizontalContentAlignment="Center">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Target="Root.Background" Value="Cyan" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
     
     <Grid Padding="20">
@@ -45,13 +74,16 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Width="400" Height="80" Fill="Gray" Margin="20"/>
+        <ListView ItemContainerStyle="{StaticResource StepsContainerStyle}" 
+                  Margin="20" 
+                  ItemsSource="{x:Bind ViewModel.Steps}"
+                  SelectedItem="{x:Bind ViewModel.SelectedStep, Mode=TwoWay}"/>
 
         <ScrollViewer Grid.Row="1">
             <ItemsControl ItemsSource="{x:Bind ViewModel.Items}" ItemTemplate="{StaticResource CartItemTemplate}"/>
         </ScrollViewer>
 
-        <Button Content="Checkout" Grid.Row="2" Margin="20" HorizontalAlignment="Center"/>
+        <Button Content="Checkout" Grid.Row="2" Margin="20" HorizontalAlignment="Center" Click="{x:Bind ViewModel.ChangeSelectStep}"/>
 
     </Grid>
 </Page>
