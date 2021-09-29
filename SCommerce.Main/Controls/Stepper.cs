@@ -40,7 +40,9 @@ namespace SCommerce.Main.Controls
             self.UpdateVisualState();
         }
 
-        public event RoutedEventHandler RemoveAll;
+        public event RoutedEventHandler Removed;
+        public event RoutedEventHandler Added;
+        public event RoutedEventHandler Subtracted;
 
         public Stepper()
         {
@@ -73,19 +75,22 @@ namespace SCommerce.Main.Controls
             }
         }
 
-        private void OnSubtract(object sender, RoutedEventArgs e)
-        {
-            Value--;
-
-            if (Value == 0)
-            {
-                RemoveAll?.Invoke(this, new RoutedEventArgs());
-            }
-        }
-
         private void OnAdd(object sender, RoutedEventArgs e)
         {
             Value++;
+            Added?.Invoke(this, new RoutedEventArgs());
+        }
+
+        private void OnSubtract(object sender, RoutedEventArgs e)
+        {
+            Value--;
+            Subtracted?.Invoke(this, new RoutedEventArgs());
+
+
+            if (Value == 0)
+            {
+                Removed?.Invoke(this, new RoutedEventArgs());
+            }
         }
 
         private void UpdateVisualState()

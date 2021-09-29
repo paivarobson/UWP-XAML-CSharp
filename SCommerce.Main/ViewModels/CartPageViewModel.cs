@@ -4,6 +4,7 @@ using SCommerce.Main.Events.Models;
 using SCommerce.Main.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,9 @@ namespace SCommerce.Main.ViewModels
     {
         private readonly ICartService cartService;
 
-        private List<CartEntry> items;
+        private ObservableCollection<CartItemViewModel> items;
 
-        public List<CartEntry> Items
+        public ObservableCollection<CartItemViewModel> Items
         {
             get { return items; }
             set { SetProperty(ref items, value); }
@@ -26,11 +27,32 @@ namespace SCommerce.Main.ViewModels
         {
             this.cartService = cartService;
         }
-        public override async void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
+        public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
         {
             base.OnNavigatedTo(e, viewModelState);
 
-            Items = cartService.ListitemsForCheckout();
+            var list = cartService.ListItemsForCheckout()
+                                .Select(i => CartItemViewModel.Create(i, AddItem, SubtractItem, RemoveItem))
+                                .ToList();
+
+            Items = new ObservableCollection<CartItemViewModel>(list);
+        }
+
+        private async void AddItem(int productId, int quatity)
+        {
+            await cartService.AddAsync(productId, quatity);
+        }
+
+        private void SubtractItem(int productId, int quatity)
+        {
+            cartService.Subtract(productId, quatity);
+        }
+
+        private void RemoveItem(int productId)
+        {
+            cartService.Remove(productId);
+            var item = Items.FirstOrDefault(i => i.ProductId == productId);
+            Items.Remove(item);
         }
     }
 }

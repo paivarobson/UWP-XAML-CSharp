@@ -5,12 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:prism="using:Prism.Windows.Mvvm" xmlns:models="using:SCommerce.Main.Events.Models" xmlns:controls="using:SCommerce.Main.Controls"
+    xmlns:prism="using:Prism.Windows.Mvvm" 
+    xmlns:controls="using:SCommerce.Main.Controls" 
+    xmlns:viewmodels="using:SCommerce.Main.ViewModels"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
-        <DataTemplate x:Key="CartItemTemplate" x:DataType="models:CartEntry">
+        <DataTemplate x:Key="CartItemTemplate" x:DataType="viewmodels:CartItemViewModel">
             <Grid Padding="0,0,0,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -25,7 +27,12 @@
                     <TextBlock Text="{x:Bind Price}"/>
                 </StackPanel>
 
-                <controls:Stepper Value="{x:Bind Quantity}" Grid.Column="2" VerticalAlignment="Center"/>
+                <controls:Stepper Value="{x:Bind Quantity}" 
+                                  Grid.Column="2" 
+                                  VerticalAlignment="Center"
+                                  Added="{x:Bind Add}"
+                                  Subtracted="{x:Bind Subtract}"
+                                  Removed="{x:Bind Remove}"/>
                 
             </Grid>
         </DataTemplate>

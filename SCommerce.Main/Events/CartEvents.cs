@@ -15,4 +15,21 @@ namespace SCommerce.Main.Events
             public int Quatity { get; set; }
         }
     }
+
+    public class SubtractedFromCartEvent : PubSubEvent<SubtractedFromCartEvent.PayLoad>
+    {
+        public class PayLoad
+        {
+            public int ProductId { get; set; }
+            public int Quatity { get; set; }
+        }
+    }
+
+    public class RemovedFromCartEvent : PubSubEvent<RemovedFromCartEvent.PayLoad>
+    {
+        public class PayLoad
+        {
+            public int ProductId { get; set; }
+        }
+    }
 }

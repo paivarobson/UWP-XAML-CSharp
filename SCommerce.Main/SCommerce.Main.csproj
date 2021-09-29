@@ -135,6 +135,7 @@
     <Compile Include="Services\ICartService.cs" />
     <Compile Include="Services\IProductService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="ViewModels\CartItemViewModel.cs" />
     <Compile Include="ViewModels\CartPageViewModel.cs" />
     <Compile Include="ViewModels\HeaderViewModel.cs" />
     <Compile Include="ViewModels\ProductDetailsPageViewModel.cs" />

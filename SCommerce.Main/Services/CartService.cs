@@ -50,7 +50,34 @@ namespace SCommerce.Main.Services
             });
         }
 
-        public List<CartEntry> ListitemsForCheckout()
+        public void Subtract(int productId, int quantity)
+        {
+            if (cart.ContainsKey(productId))
+            {
+                cart[productId].Quantity -= quantity;
+
+                eventAggregator.GetEvent<SubtractedFromCartEvent>().Publish(new SubtractedFromCartEvent.PayLoad
+                {
+                    ProductId = productId,
+                    Quatity = quantity
+                });
+            }
+        }
+
+        public void Remove(int productId)
+        {
+            if (cart.ContainsKey(productId))
+
+                cart.Remove(productId);
+            {
+                eventAggregator.GetEvent<RemovedFromCartEvent>().Publish(new RemovedFromCartEvent.PayLoad
+                {
+                    ProductId = productId
+                });
+            }
+        }
+
+        public List<CartEntry> ListItemsForCheckout()
         {
             return cart.Values.ToList();
         }

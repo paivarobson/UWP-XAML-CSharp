@@ -27,7 +27,13 @@ namespace SCommerce.Main.ViewModels
             this.navigationService = navigationService;
 
             eventAggregator.GetEvent<AddedToCartEvent>().Subscribe(HandleAddedToCartEvent);
+            eventAggregator.GetEvent<SubtractedFromCartEvent>().Subscribe(HandleSubtractToCartEvent);
 
+        }
+
+        private void HandleSubtractToCartEvent(SubtractedFromCartEvent.PayLoad payLoad)
+        {
+            CartQuatity -= payLoad.Quatity;
         }
 
         private void HandleAddedToCartEvent(AddedToCartEvent.PayLoad payLoad)

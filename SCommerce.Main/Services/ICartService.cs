@@ -8,7 +8,11 @@ namespace SCommerce.Main.Services
     {
        Task AddAsync(int productId, int quantity);
 
-        List<CartEntry> ListitemsForCheckout();
+        List<CartEntry> ListItemsForCheckout();
+
+        void Subtract(int productId, int quantity);
+
+        void Remove(int productId);
 
     }
 }
