@@ -125,6 +125,7 @@
     <Compile Include="Common\PageTokens.cs" />
     <Compile Include="Controls\BadgeAppBarButton.cs" />
     <Compile Include="Controls\Rating.cs" />
+    <Compile Include="Controls\SpaceBetweenPanel.cs" />
     <Compile Include="Controls\Stepper.cs" />
     <Compile Include="Converters\DoubleToCurrencyFormatConverter.cs" />
     <Compile Include="Entities\Product.cs" />
