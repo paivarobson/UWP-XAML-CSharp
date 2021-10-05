@@ -1,6 +1,7 @@
 ﻿using Prism.Unity.Windows;
 using SCommerce.Main.Common;
 using SCommerce.Main.Entities;
+using SCommerce.Main.Repositories;
 using SCommerce.Main.Services;
 using SCommerce.Main.Views;
 using System;
@@ -30,12 +31,12 @@ namespace SCommerce.Main
     {
         protected override async Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            using(var db = new SCommercecDb())
+            using(var db = new SCommerceDb())
             {
                 await db.Database.EnsureCreatedAsync();
             }
 
-            NavigationService.Navigate(PageTokens.ProductsPage, null);
+            NavigationService.Navigate(PageTokens.ProductFormPage, null);
         }
 
         protected override UIElement CreateShell(Frame rootFrame)
@@ -52,6 +53,8 @@ namespace SCommerce.Main
 
             RegisterTypeIfMissing(typeof(IProductService), typeof(ProductService), false);
             RegisterTypeIfMissing(typeof(ICartService), typeof(CartService), true);
+
+            RegisterTypeIfMissing(typeof(IProductRepository), typeof(ProductRepository), false);
         }
     }
 }

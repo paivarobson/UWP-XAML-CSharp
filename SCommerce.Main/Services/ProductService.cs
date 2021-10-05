@@ -1,4 +1,5 @@
 ﻿using SCommerce.Main.Entities;
+using SCommerce.Main.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,28 @@ namespace SCommerce.Main.Services
 {
     public class ProductService : IProductService
     {
+        private readonly IProductRepository productRepository;
+
+        public ProductService(IProductRepository productRepository)
+        {
+            this.productRepository = productRepository;
+        }
+
+        public async Task<Product> CreateAsync(string title, string description, int rating, double price)
+        {
+            var product = new Product
+            {
+                Title = title,
+                Description = description,
+                Rating = rating,
+                Price = price
+            };
+
+            await productRepository.AddAsync(product);
+
+            return product;
+    }
+
         public Task<Product> FindAsync(int id)
         {
             var result = new Product

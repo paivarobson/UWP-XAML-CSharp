@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SCommerce.Main.Entities
 {
-    public class SCommercecDb : DbContext
+    public class SCommerceDb : DbContext
     {
         public DbSet<Product> Products { get; set; }
 

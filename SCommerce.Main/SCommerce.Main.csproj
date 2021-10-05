@@ -130,10 +130,12 @@
     <Compile Include="Converters\DoubleToCurrencyFormatConverter.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductImage.cs" />
-    <Compile Include="Entities\SCommercecDb.cs" />
+    <Compile Include="Entities\SCommerceDb.cs" />
     <Compile Include="Events\CartEvents.cs" />
     <Compile Include="Models\CartEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IProductRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Services\CartService.cs" />
     <Compile Include="Services\ICartService.cs" />
     <Compile Include="Services\IProductService.cs" />
@@ -142,6 +144,7 @@
     <Compile Include="ViewModels\CartPageViewModel.cs" />
     <Compile Include="ViewModels\HeaderViewModel.cs" />
     <Compile Include="ViewModels\ProductDetailsPageViewModel.cs" />
+    <Compile Include="ViewModels\ProductFormPageViewModel.cs" />
     <Compile Include="Views\CartPage.xaml.cs">
       <DependentUpon>CartPage.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,9 @@
     </Compile>
     <Compile Include="Views\ProductDetailsPage.xaml.cs">
       <DependentUpon>ProductDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductFormPage.xaml.cs">
+      <DependentUpon>ProductFormPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>
@@ -203,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProductDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductFormPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
