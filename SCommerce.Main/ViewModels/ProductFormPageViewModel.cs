@@ -63,7 +63,8 @@ namespace SCommerce.Main.ViewModels
             await productService.CreateAsync(Title,
                                             Description,
                                             Rating,
-                                            Price);
+                                            Price,
+                                            Images);
         }
 
         public async void AddImage()

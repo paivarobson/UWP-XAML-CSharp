@@ -1,5 +1,7 @@
 ﻿using SCommerce.Main.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace SCommerce.Main.Services
 {
@@ -7,6 +9,6 @@ namespace SCommerce.Main.Services
     {
         Task<Product> FindAsync(int id);
 
-        Task<Product> CreateAsync(string title, string description, int rating, double price);
+        Task<Product> CreateAsync(string title, string description, int rating, double price, IList<StorageFile> images);
     }
 }
