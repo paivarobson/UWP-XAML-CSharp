@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:prism="using:Prism.Windows.Mvvm"
+    xmlns:prism="using:Prism.Windows.Mvvm" xmlns:storage="using:Windows.Storage" xmlns:converters="using:SCommerce.Main.Converters"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
@@ -20,6 +20,12 @@
             <Setter Property="Margin" Value="0,0,0,5"/>
             <Setter Property="FontSize" Value="20"/>
         </Style>
+
+        <converters:StorageFileToThumbnailConverter x:Key="StorageFileToThumbnailConverter" />
+
+        <DataTemplate x:Key="ThumbnailItem" x:DataType="storage:StorageFile">
+            <Image Width="60" Height="60" Stretch="UniformToFill" Source="{x:Bind Converter={StaticResource StorageFileToThumbnailConverter}}"/>
+        </DataTemplate>
     </Page.Resources>
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Padding="50">
@@ -49,7 +55,7 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1">
-            <GridView  MaxWidth="400" ItemsSource="{x:Bind ViewModel.Images}"/>
+            <GridView  MaxWidth="400" ItemsSource="{x:Bind ViewModel.Images}" ItemTemplate="{StaticResource ThumbnailItem}"/>
 
             <Button Content="Add Image" Click="{x:Bind ViewModel.AddImage}" HorizontalAlignment="Stretch" Margin="0,30,0,0"/>
         </StackPanel>
