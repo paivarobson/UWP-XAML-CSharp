@@ -1,5 +1,6 @@
 ﻿using Prism.Unity.Windows;
 using SCommerce.Main.Common;
+using SCommerce.Main.Entities;
 using SCommerce.Main.Services;
 using SCommerce.Main.Views;
 using System;
@@ -27,11 +28,14 @@ namespace SCommerce.Main
     /// </summary>
     public sealed partial class App : PrismUnityApplication
     {
-        protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
+        protected override async Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            NavigationService.Navigate(PageTokens.ProductDetailsPage, null);
+            using(var db = new SCommercecDb())
+            {
+                await db.Database.EnsureCreatedAsync();
+            }
 
-            return Task.CompletedTask;
+            NavigationService.Navigate(PageTokens.ProductsPage, null);
         }
 
         protected override UIElement CreateShell(Frame rootFrame)

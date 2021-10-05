@@ -85,8 +85,8 @@ namespace SCommerce.Main.ViewModels
             Description = model.Description;
             Price = model.Price;
             Rating = model.Rating;
-            Images = model.Images;
-            SelectedImage = model.Images.FirstOrDefault();
+            Images = model.Images.Select(i => i.Path).ToList();
+            SelectedImage = model.Images.FirstOrDefault()?.Path;
         }
 
         public async void AddToCart()

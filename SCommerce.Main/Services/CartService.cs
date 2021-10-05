@@ -37,7 +37,7 @@ namespace SCommerce.Main.Services
                     Quantity = quantity,
                     Title = product.Title,
                     Price = product.Price,
-                    Image = product.Images.FirstOrDefault()
+                    Image = product.Images.FirstOrDefault().Path
                 };
 
                 cart.Add(productId, cartEntry);

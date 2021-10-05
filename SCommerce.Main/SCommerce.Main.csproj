@@ -129,6 +129,8 @@
     <Compile Include="Controls\Stepper.cs" />
     <Compile Include="Converters\DoubleToCurrencyFormatConverter.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductImage.cs" />
+    <Compile Include="Entities\SCommercecDb.cs" />
     <Compile Include="Events\CartEvents.cs" />
     <Compile Include="Models\CartEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -148,6 +150,9 @@
     </Compile>
     <Compile Include="Views\ProductDetailsPage.xaml.cs">
       <DependentUpon>ProductDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductsPage.xaml.cs">
+      <DependentUpon>ProductsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -201,8 +206,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ProductsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
+      <Version>3.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core">
+      <Version>3.1.6</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>

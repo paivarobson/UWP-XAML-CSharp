@@ -10,5 +10,6 @@ namespace SCommerce.Main.Common
     {
         public const string ProductDetailsPage = "ProductDetails";
         public const string CartPage = "Cart";
+        public const string ProductsPage = "Products";
     }
 }
