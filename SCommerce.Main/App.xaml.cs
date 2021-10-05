@@ -36,7 +36,7 @@ namespace SCommerce.Main
                 await db.Database.EnsureCreatedAsync();
             }
 
-            NavigationService.Navigate(PageTokens.ProductFormPage, null);
+            NavigationService.Navigate(PageTokens.ProductsPage, null);
         }
 
         protected override UIElement CreateShell(Frame rootFrame)

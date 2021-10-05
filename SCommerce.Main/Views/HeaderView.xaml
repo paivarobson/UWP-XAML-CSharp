@@ -22,6 +22,7 @@
                 Margin="20,0"/>
         </CommandBar.Content>
 
+        <AppBarButton Icon="Add" Click="{x:Bind ViewModel.OpenAddProduct}"/>
         <controls:BadgeAppBarButton Icon="Library" Badge="{x:Bind ViewModel.CartQuatity, Mode=OneWay}" Click="{x:Bind ViewModel.NavigateToCartPage}"/>
     </CommandBar>
 </UserControl>

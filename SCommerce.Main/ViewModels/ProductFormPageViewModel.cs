@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 
@@ -65,6 +66,8 @@ namespace SCommerce.Main.ViewModels
                                             Rating,
                                             Price,
                                             Images);
+
+            CoreApplication.GetCurrentView().CoreWindow.Close();
         }
 
         public async void AddImage()

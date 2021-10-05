@@ -3,11 +3,16 @@ using Prism.Mvvm;
 using Prism.Windows.Navigation;
 using SCommerce.Main.Common;
 using SCommerce.Main.Events;
+using SCommerce.Main.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
 
 namespace SCommerce.Main.ViewModels
 {
@@ -44,6 +49,23 @@ namespace SCommerce.Main.ViewModels
         public void NavigateToCartPage()
         {
             navigationService.Navigate(PageTokens.CartPage, null);
+        }
+
+        public async void OpenAddProduct()
+        {
+            var view = CoreApplication.CreateNewView();
+            int viewId = 0;
+
+            await view.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                var page = new ProductFormPage();
+                Window.Current.Content = page;
+                Window.Current.Activate();
+
+                viewId = ApplicationView.GetForCurrentView().Id;
+            });
+
+            await ApplicationViewSwitcher.TryShowAsStandaloneAsync(viewId);
         }
     }
 }
