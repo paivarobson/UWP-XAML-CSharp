@@ -49,10 +49,9 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1">
-            <GridView  MaxWidth="400"/>
+            <GridView  MaxWidth="400" ItemsSource="{x:Bind ViewModel.Images}"/>
 
-            <Button Content="Add Image" Click="{x:Bind ViewModel.Save}" HorizontalAlignment="Stretch" Margin="0,30,0,0"/>
-
+            <Button Content="Add Image" Click="{x:Bind ViewModel.AddImage}" HorizontalAlignment="Stretch" Margin="0,30,0,0"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -2,9 +2,12 @@
 using SCommerce.Main.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 
 namespace SCommerce.Main.ViewModels
 {
@@ -40,9 +43,19 @@ namespace SCommerce.Main.ViewModels
             set { SetProperty(ref price, value); }
         }
 
+        private ObservableCollection<StorageFile> images;
+        public ObservableCollection<StorageFile> Images
+        {
+            get { return images; }
+            set { SetProperty(ref images, value); }
+        }
+
+
         public ProductFormPageViewModel(IProductService productService)
         {
             this.productService = productService;
+
+            Images = new ObservableCollection<StorageFile>();
         }
     
         public async void Save()
@@ -51,6 +64,27 @@ namespace SCommerce.Main.ViewModels
                                             Description,
                                             Rating,
                                             Price);
+        }
+
+        public async void AddImage()
+        {
+            var picker = new FileOpenPicker();
+            picker.ViewMode = PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".png");
+
+            var files = await picker.PickMultipleFilesAsync();
+
+            if (files != null)
+            {
+                foreach (var file in files)
+                {
+                    Images.Add(file);
+                }   
+            }
+
         }
     }
 }
