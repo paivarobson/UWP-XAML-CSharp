@@ -22,6 +22,8 @@ namespace SCommerce.Main.Views
     /// </summary>
     public sealed partial class ProductsPage : Page
     {
+        public ProductsPageViewModel ViewModel => (ProductsPageViewModel)DataContext;
+
         public ProductsPage()
         {
             this.InitializeComponent();

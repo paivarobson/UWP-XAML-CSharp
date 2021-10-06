@@ -146,6 +146,7 @@
     <Compile Include="ViewModels\HeaderViewModel.cs" />
     <Compile Include="ViewModels\ProductDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\ProductFormPageViewModel.cs" />
+    <Compile Include="ViewModels\ProductItemViewModel.cs" />
     <Compile Include="Views\CartPage.xaml.cs">
       <DependentUpon>CartPage.xaml</DependentUpon>
     </Compile>
@@ -161,6 +162,7 @@
     <Compile Include="Views\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProductsPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

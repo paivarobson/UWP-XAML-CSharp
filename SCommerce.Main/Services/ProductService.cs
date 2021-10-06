@@ -43,6 +43,8 @@ namespace SCommerce.Main.Services
             return product;
     }
 
+        public Task<List<Product>> ListAsync() => productRepository.ListAsync();
+
         public Task<Product> FindAsync(int id)
         {
             var result = new Product

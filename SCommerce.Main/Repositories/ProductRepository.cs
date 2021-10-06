@@ -1,4 +1,5 @@
-﻿using SCommerce.Main.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SCommerce.Main.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,14 @@ namespace SCommerce.Main.Repositories
                 db.Products.Add(product);
 
                 await db.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<Product>> ListAsync()
+        {
+            using (var db = new SCommerceDb())
+            {
+                return await db.Products.ToListAsync();
             }
         }
     }

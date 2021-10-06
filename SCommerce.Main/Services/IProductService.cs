@@ -10,5 +10,6 @@ namespace SCommerce.Main.Services
         Task<Product> FindAsync(int id);
 
         Task<Product> CreateAsync(string title, string description, int rating, double price, IList<StorageFile> images);
+        Task<List<Product>> ListAsync();
     }
 }
