@@ -19,7 +19,7 @@
                 <ItemsStackPanel Orientation="Horizontal"/>
             </ItemsPanelTemplate>
 
-            <DataTemplate x:Key="ImagesItemTemplate" x:DataType="x:String">
+            <DataTemplate x:Key="ImagesItemTemplate" x:DataType="BitmapImage">
                 <Border CornerRadius="15" Height="100" Width="100" >
                     <Image Source="{x:Bind}" Stretch="UniformToFill"/>
                 </Border>
@@ -127,7 +127,7 @@
                            Stretch="UniformToFill"/>
                 </Border>
 
-                <ListView ItemsSource="{x:Bind ViewModel.Images}"
+                <ListView ItemsSource="{x:Bind ViewModel.Images, Mode=OneWay}"
                           ItemsPanel="{StaticResource ImagesPanelTemplate}"
                           ItemTemplate="{StaticResource ImagesItemTemplate}"
                           SelectedItem="{x:Bind ViewModel.SelectedImage, Mode=TwoWay}"/>

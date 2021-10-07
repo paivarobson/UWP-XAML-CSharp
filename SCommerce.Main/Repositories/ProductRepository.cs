@@ -29,5 +29,15 @@ namespace SCommerce.Main.Repositories
                                 .ToListAsync();
             }
         }
+
+        public async Task<Product> FindAsync(int id)
+        {
+            using (var db = new SCommerceDb())
+            {
+                return await db.Products
+                    .Include(p => p.Images)
+                    .FirstOrDefaultAsync(p => p.Id == id);
+            }
+        }
     }
 }

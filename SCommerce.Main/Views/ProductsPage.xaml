@@ -27,6 +27,9 @@
     
     <Grid Padding="30">
         <GridView ItemsSource="{x:Bind ViewModel.Items}" 
-                  ItemTemplate="{StaticResource ProductTemplate}"/>
+                  ItemTemplate="{StaticResource ProductTemplate}"
+                  SelectionMode="None"
+                  IsItemClickEnabled="True"
+                  ItemClick="{x:Bind ViewModel.OpenProductDetails}"/>
     </Grid>
 </Page>

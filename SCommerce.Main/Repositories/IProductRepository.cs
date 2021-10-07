@@ -7,7 +7,7 @@ namespace SCommerce.Main.Repositories
     public interface IProductRepository
     {
         Task AddAsync(Product product);
-
+        Task<Product> FindAsync(int id);
         Task<List<Product>> ListAsync();
     }
 }

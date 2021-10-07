@@ -1,5 +1,6 @@
 ﻿using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
+using SCommerce.Main.Common;
 using SCommerce.Main.Services;
 using SCommerce.Main.ViewModels;
 using System;
@@ -8,13 +9,16 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace SCommerce.Main.Views
 {
     public class ProductsPageViewModel : ViewModelBase
     {
         private readonly IProductService productService;
+        private readonly INavigationService navigationService;
 
+        
         private ObservableCollection<ProductItemViewModel> items;
         public ObservableCollection<ProductItemViewModel> Items
         {
@@ -22,9 +26,10 @@ namespace SCommerce.Main.Views
             set { SetProperty(ref items, value); }
         }
 
-        public ProductsPageViewModel(IProductService productService)
+        public ProductsPageViewModel(IProductService productService, INavigationService navigationService)
         {
             this.productService = productService;
+            this.navigationService = navigationService;
         }
 
         public override async void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
@@ -36,6 +41,15 @@ namespace SCommerce.Main.Views
             var list = products.Select(i => new ProductItemViewModel(i));
 
             Items = new ObservableCollection<ProductItemViewModel>(list);
+        }
+
+        public void OpenProductsDetails(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is ProductItemViewModel item)
+            {
+                navigationService.Navigate(PageTokens.ProductDetailsPage, item.Id);
+
+            }
         }
     }
 }

@@ -6,9 +6,12 @@ using SCommerce.Main.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace SCommerce.Main.ViewModels
 {
@@ -49,16 +52,16 @@ namespace SCommerce.Main.ViewModels
             set { SetProperty(ref rating, value); }
         }
 
-        private List<string> images;
-        public List<string> Images
+        private List<BitmapImage> images;
+        public List<BitmapImage> Images
         {
             get { return images; }
             set { SetProperty(ref images, value); }
         }
 
-        private string selectedImage;
+        private BitmapImage selectedImage;
 
-        public string SelectedImage
+        public BitmapImage SelectedImage
         {
             get { return selectedImage; }
             set { SetProperty(ref selectedImage, value); }
@@ -74,7 +77,10 @@ namespace SCommerce.Main.ViewModels
         public override async void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
         {
             base.OnNavigatedTo(e, viewModelState);
-            await LoadProductAsync(1);
+
+            var productId = (int)e.Parameter;
+
+            await LoadProductAsync(productId);
         }
 
         private async Task LoadProductAsync(int id)
@@ -85,8 +91,31 @@ namespace SCommerce.Main.ViewModels
             Description = model.Description;
             Price = model.Price;
             Rating = model.Rating;
-            Images = model.Images.Select(i => i.Path).ToList();
-            SelectedImage = model.Images.FirstOrDefault()?.Path;
+            
+            var list = await LoadImagesAsync();
+            Images = list;
+            SelectedImage = list.FirstOrDefault();
+        }
+
+        private async Task<List<BitmapImage>> LoadImagesAsync()
+        {
+            var list = new List<BitmapImage>();
+            foreach (var item in model.Images)
+            {
+                var path = Path.Combine("images", item.Path);
+
+                var file = await ApplicationData.Current.LocalFolder.GetFileAsync(path);
+
+                using (var stream = file.OpenReadAsync().AsTask().Result)
+                {
+                    var bi = new BitmapImage();
+                    await bi.SetSourceAsync(stream);
+
+                    list.Add(bi);
+                }
+            }
+
+            return list;
         }
 
         public async void AddToCart()
