@@ -11,8 +11,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <DataTemplate x:Key="ProductTemplate" x:DataType="viewmodels:ProductItemViewModel">
-            <Grid Width="250" Height="180">
-                <Image />
+            <Grid Width="250" Height="180" DataContextChanged="{x:Bind LoadThumbnail}">
+                <Image Source="{x:Bind Thumbnail, Mode=OneWay}" Stretch="UniformToFill" />
 
                 <StackPanel VerticalAlignment="Bottom" Background="#66000000" Padding="15,8">
                     <TextBlock Text="{x:Bind Title}" Foreground="White"/>

@@ -24,7 +24,9 @@ namespace SCommerce.Main.Repositories
         {
             using (var db = new SCommerceDb())
             {
-                return await db.Products.ToListAsync();
+                return await db.Products
+                                .Include(p => p.Images)
+                                .ToListAsync();
             }
         }
     }
