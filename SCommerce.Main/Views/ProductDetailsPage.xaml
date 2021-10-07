@@ -139,7 +139,7 @@
                     <Run Text="{x:Bind ViewModel.Price, Converter={StaticResource CurrencyConverter}}"/>
                 </TextBlock>
 
-                <Button Content="Add to Cart" Style="{StaticResource PrimaryButton}" Click="{x:Bind ViewModel.AddToCart}"/>
+                <Button Content="Add to Cart" x:Uid="ProductDetails_AddToCart_Button" Style="{StaticResource PrimaryButton}" Click="{x:Bind ViewModel.AddToCart}"/>
 
             </StackPanel>
 

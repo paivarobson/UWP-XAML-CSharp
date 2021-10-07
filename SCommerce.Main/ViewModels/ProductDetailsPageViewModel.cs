@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Prism.Windows.AppModel;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
 using SCommerce.Main.Entities;
@@ -20,6 +21,7 @@ namespace SCommerce.Main.ViewModels
         #region Attributes
         private readonly IProductService productService;
         private readonly ICartService cartService;
+        private readonly IResourceLoader resourceLoader;
         private Product model;
         #endregion
 
@@ -68,10 +70,11 @@ namespace SCommerce.Main.ViewModels
         }
         #endregion
 
-        public ProductDetailsPageViewModel(IProductService productService, ICartService cartService)
+        public ProductDetailsPageViewModel(IProductService productService, ICartService cartService, IResourceLoader resourceLoader)
         {
             this.productService = productService;
             this.cartService = cartService;
+            this.resourceLoader = resourceLoader;
         }
 
         public override async void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
@@ -87,7 +90,9 @@ namespace SCommerce.Main.ViewModels
         {
             model = await productService.FindAsync(id);
 
-            Title = model.Title;
+            var saleLabel = resourceLoader.GetString("SaleLabel");
+
+            Title = $"{model.Title} ({saleLabel})";
             Description = model.Description;
             Price = model.Price;
             Rating = model.Rating;

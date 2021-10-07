@@ -46,9 +46,6 @@ namespace SCommerce.Main.Services
         public Task<List<Product>> ListAsync() => productRepository.ListAsync();
 
         public Task<Product> FindAsync(int id) => productRepository.FindAsync(id);
-        {
-            
 
-        }
     }
 }

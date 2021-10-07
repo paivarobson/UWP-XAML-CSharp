@@ -1,4 +1,6 @@
-﻿using Prism.Unity.Windows;
+﻿using Microsoft.Practices.Unity;
+using Prism.Unity.Windows;
+using Prism.Windows.AppModel;
 using SCommerce.Main.Common;
 using SCommerce.Main.Entities;
 using SCommerce.Main.Repositories;
@@ -12,6 +14,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -50,6 +53,8 @@ namespace SCommerce.Main
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
+
+            Container.RegisterInstance(typeof(IResourceLoader), new ResourceLoaderAdapter(new ResourceLoader()), new ContainerControlledLifetimeManager());
 
             RegisterTypeIfMissing(typeof(IProductService), typeof(ProductService), false);
             RegisterTypeIfMissing(typeof(ICartService), typeof(CartService), true);

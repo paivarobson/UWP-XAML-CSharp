@@ -43,7 +43,7 @@ namespace SCommerce.Main.Views
             Items = new ObservableCollection<ProductItemViewModel>(list);
         }
 
-        public void OpenProductsDetails(object sender, ItemClickEventArgs e)
+        public void OpenProductDetails(object sender, ItemClickEventArgs e)
         {
             if (e.ClickedItem is ProductItemViewModel item)
             {
